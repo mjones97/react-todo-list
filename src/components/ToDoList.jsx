@@ -1,21 +1,20 @@
 import React from 'react'
-import ToDoItem from './ToDoItem'
 
-const ToDoList = ({ todos, toggleTodo, removeTodo }) => {
-    return (
-        <div>
-            <ul>
-                {todos.map(todo => (
-                    <ToDoItem
-                        key={todo.id}
-                        todo={todo}
-                        toggleTodo={toggleTodo}
-                        removeTodo={removeTodo}
-                    />
-                ))}
-            </ul>
-        </div>
+const ToDoItem = ({ todo, toggleTodo, removeTodo }) => {
+  return (
+    <div>
+        <li>
+            <span 
+                style={{ textDecoration: todo.completed ? 'line-through' : 'none' }} 
+                onClick={() => toggleTodo(todo.id)}
+            >
+                {todo.text}
+            </span>
+            <button className='delete-btn' onClick={() => removeTodo(todo.id)}>Delete</button>
+        </li>
+        <div className="divider"></div>
+    </div>
   )
 }
 
-export default ToDoList
+export default ToDoItem
